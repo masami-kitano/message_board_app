@@ -28,7 +28,7 @@ class MessagesController < ApplicationController
   end
   
   def update
-    if @message.upgrade(message_params)
+    if @message.update(message_params)
       flash[:success] = 'Messageは正常終了しました'
       redirect_to @message
     else
@@ -53,5 +53,5 @@ end
 
 # Strong Parameter
 def message_params
-  params.require(:message).permit(:content)
+  params.require(:message).permit(:content, :title)
 end
